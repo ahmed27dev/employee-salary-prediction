@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .vscode/
+git reset
+git add .
+git status
