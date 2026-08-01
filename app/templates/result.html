@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction Result — Salary Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-header">
+        <span class="eyebrow">Employee Salary Prediction</span>
+        <h1>Prediction result</h1>
+        <p class="subhead">Based on the role details you submitted.</p>
+      </header>
+
+      <div class="result-panel">
+        <div class="result-metric">
+          <div class="result-metric-label">Predicted salary</div>
+          <div class="result-salary">
+            ₹{{ "{:,.2f}".format(predicted_salary) }}
+          </div>
+        </div>
+
+        <div class="result-metric">
+          <div class="result-metric-label">Salary category</div>
+          <span class="result-category {{ predicted_category | lower }}"
+            >{{ predicted_category }}</span
+          >
+        </div>
+
+        <div class="result-inputs">
+          <div class="result-inputs-title">Submitted details</div>
+          <div class="readout-body">
+            <div class="readout-row">
+              <span class="readout-key">job_title</span
+              ><span class="readout-val">{{ form_data.job_title }}</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">experience_years</span
+              ><span class="readout-val">{{ form_data.experience_years }}</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">education_level</span
+              ><span class="readout-val">{{ form_data.education_level }}</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">skills_count</span
+              ><span class="readout-val">{{ form_data.skills_count }}</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">certifications</span
+              ><span class="readout-val">{{ form_data.certifications }}</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">industry</span
+              ><span class="readout-val">{{ form_data.industry }}</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">company_size</span
+              ><span class="readout-val">{{ form_data.company_size }}</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">location</span
+              ><span class="readout-val">{{ form_data.location }}</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">remote_work</span
+              ><span class="readout-val">{{ form_data.remote_work }}</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="{{ url_for('index') }}" class="result-back"
+          >← Run another prediction</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

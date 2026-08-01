@@ -1,0 +1,11 @@
+Feature,Description,Role
+job_title,Employee's job title,Feature
+experience_years,Years of work experience,Feature
+education_level,Highest education level,Feature
+skills_count,Number of skills,Feature
+industry,Industry where employee works,Feature
+company_size,Company size,Feature
+location,Employee location,Feature
+remote_work,Whether employee works remotely,Feature
+certifications,Number of certifications,Feature
+salary,Employee salary,Target

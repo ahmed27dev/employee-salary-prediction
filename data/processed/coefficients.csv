@@ -1,0 +1,39 @@
+feature,coefficient
+nom__location_India,-48161.74483803531
+nom__location_USA,35687.36625252768
+nom__job_title_AI Engineer,27995.768503685766
+nom__job_title_Data Analyst,-25750.53456085821
+nom__job_title_Business Analyst,-23468.623472928823
+nom__location_Canada,21666.16801877655
+nom__job_title_Machine Learning Engineer,17352.756483149853
+num__experience_years,16352.98208828307
+nom__location_UK,14649.26602571584
+nom__job_title_Frontend Developer,-12825.648888546477
+nom__job_title_Product Manager,11949.895161505723
+ord__company_size,10608.829619150492
+ord__education_level,8067.339578075109
+nom__location_Germany,7687.906812432396
+nom__job_title_Cloud Engineer,6537.333740562939
+nom__location_Sweden,-6349.575941395002
+nom__location_Netherlands,-6329.171106475147
+nom__job_title_Backend Developer,-6305.176070447562
+nom__location_Australia,-6300.172538037501
+nom__location_Singapore,-6282.440946235614
+nom__location_Remote,-6267.601739273867
+num__skills_count,4696.553449088808
+nom__job_title_DevOps Engineer,4358.981520824362
+nom__job_title_Software Engineer,-4246.666834063626
+nom__job_title_Cybersecurity Analyst,3364.670990995035
+num__certifications,2752.4409921834726
+ord__remote_work,2669.711129008811
+nom__job_title_Data Scientist,1037.2434261210144
+nom__industry_Government,81.73169956255697
+nom__industry_Manufacturing,-72.27801064125514
+nom__industry_Consulting,-67.779053703725
+nom__industry_Education,-54.2452363307653
+nom__industry_Retail,43.350539086129956
+nom__industry_Healthcare,32.89202126550322
+nom__industry_Media,28.409285792691914
+nom__industry_Technology,-19.429979250252327
+nom__industry_Telecom,14.281840273791934
+nom__industry_Finance,13.066893945268836

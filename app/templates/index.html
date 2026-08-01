@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salary Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-header">
+        <span class="eyebrow">Employee Salary Prediction</span>
+        <h1>Estimate a role's market salary</h1>
+        <p class="subhead">
+          Fill in the role details below. The model returns a predicted salary
+          figure and a Low / Medium / High category, trained on 250,000 salary
+          records.
+        </p>
+      </header>
+
+      <div class="layout">
+        <form
+          class="form-panel"
+          action="{{ url_for('predict') }}"
+          method="POST"
+          id="predict-form"
+        >
+          <section class="field-group">
+            <div class="group-label">
+              <span class="group-index">01</span> Role &amp; Experience
+            </div>
+
+            <div class="field">
+              <label for="job_title">Job title</label>
+              <select name="job_title" id="job_title" required>
+                <option value="" disabled selected>Select a job title</option>
+                {% for title in job_titles %}
+                <option value="{{ title }}">{{ title }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="experience_years">Years of experience</label>
+              <input
+                type="number"
+                name="experience_years"
+                id="experience_years"
+                min="0"
+                max="50"
+                required
+                placeholder="e.g. 5"
+              />
+            </div>
+
+            <div class="field">
+              <label for="education_level">Education level</label>
+              <select name="education_level" id="education_level" required>
+                <option value="" disabled selected>
+                  Select education level
+                </option>
+                {% for level in education_levels %}
+                <option value="{{ level }}">{{ level }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="skills_count">Number of skills</label>
+              <input
+                type="number"
+                name="skills_count"
+                id="skills_count"
+                min="0"
+                max="50"
+                required
+                placeholder="e.g. 8"
+              />
+            </div>
+
+            <div class="field">
+              <label for="certifications">Number of certifications</label>
+              <input
+                type="number"
+                name="certifications"
+                id="certifications"
+                min="0"
+                max="20"
+                required
+                placeholder="e.g. 2"
+              />
+            </div>
+          </section>
+
+          <section class="field-group">
+            <div class="group-label">
+              <span class="group-index">02</span> Company Context
+            </div>
+
+            <div class="field">
+              <label for="industry">Industry</label>
+              <select name="industry" id="industry" required>
+                <option value="" disabled selected>Select industry</option>
+                {% for ind in industries %}
+                <option value="{{ ind }}">{{ ind }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="company_size">Company size</label>
+              <select name="company_size" id="company_size" required>
+                <option value="" disabled selected>Select company size</option>
+                {% for size in company_sizes %}
+                <option value="{{ size }}">{{ size }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </section>
+
+          <section class="field-group">
+            <div class="group-label">
+              <span class="group-index">03</span> Work Setup
+            </div>
+
+            <div class="field">
+              <label for="location">Location</label>
+              <select name="location" id="location" required>
+                <option value="" disabled selected>Select location</option>
+                {% for loc in locations %}
+                <option value="{{ loc }}">{{ loc }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="remote_work">Remote work</label>
+              <select name="remote_work" id="remote_work" required>
+                <option value="" disabled selected>
+                  Select remote work type
+                </option>
+                {% for opt in remote_work_options %}
+                <option value="{{ opt }}">{{ opt }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </section>
+
+          <button type="submit" class="submit-btn">Predict salary</button>
+        </form>
+
+        <aside class="readout-panel" aria-live="polite">
+          <div class="readout-title">Input summary</div>
+          <div class="readout-body">
+            <div class="readout-row">
+              <span class="readout-key">job_title</span
+              ><span class="readout-val" data-field="job_title">—</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">experience_years</span
+              ><span class="readout-val" data-field="experience_years">—</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">education_level</span
+              ><span class="readout-val" data-field="education_level">—</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">skills_count</span
+              ><span class="readout-val" data-field="skills_count">—</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">certifications</span
+              ><span class="readout-val" data-field="certifications">—</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">industry</span
+              ><span class="readout-val" data-field="industry">—</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">company_size</span
+              ><span class="readout-val" data-field="company_size">—</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">location</span
+              ><span class="readout-val" data-field="location">—</span>
+            </div>
+            <div class="readout-row">
+              <span class="readout-key">remote_work</span
+              ><span class="readout-val" data-field="remote_work">—</span>
+            </div>
+          </div>
+          <div class="readout-footnote">
+            This panel mirrors your selections. It does not affect the
+            prediction until you submit.
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
